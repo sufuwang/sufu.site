@@ -4,7 +4,7 @@ import TDesign from 'tdesign-vue-next'
 
 export default {
   ...Theme,
-  enhanceApp({ app }) {
+  enhanceApp({ app }: any) {
     app.use(TDesign)
     Components.forEach(({ name, component }) => app.component(name, component))
   }

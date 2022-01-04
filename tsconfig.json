@@ -14,10 +14,11 @@
     "types": [
       "vite/client",
       "vitepress/dist/client",
+      "global"
     ],
     "typeRoots": [
       "./node_modules/vitepress/dist/client",
-      "./types",
+      "./types"
     ],
     "paths": {
       "@/*": ["./*"],
