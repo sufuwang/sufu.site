@@ -1,1 +1,0 @@
-import{_ as t,c as e,o as a,b as s}from"./app.fb75b328.js";const u='{"title":"","description":"","frontmatter":{},"relativePath":"target/index.md","lastUpdated":1640658176089}',o={},n=s("p",null,"asas111",-1),r=[n];function c(_,d,p,i,l,f){return a(),e("div",null,r)}var x=t(o,[["render",c]]);export{u as __pageData,x as default};

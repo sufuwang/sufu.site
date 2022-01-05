@@ -1,31 +1,46 @@
-# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+# 一个workflow，名为deploy to tengxunyun
+name: CD sufu.site
 
-name: Node.js CI
+on: # 此CI/CD触发时的事件
+  push: # 在代码提交时自动触发
+    branches:
+      - master
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+# 一个 CI/CD 的工作流有许多 jobs 组成，比如最典型的 job 是 lint，test，build。
+jobs: 
+  build: # 构建job
+    runs-on: ubuntu-latest # 跑workflow的服务器系统
+    steps: # job的一系列动作
+      # 切换分支获取源码
+      - name: Checkout # step的名称，将会在 github action 的控制台中显示
+        # 选择一个action，可以理解为若干 steps.run，有利于代码复用
+        uses: actions/checkout@master
+      # 安装使用 node:14
+      - name: use Node.js 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      # 运行命令，npm install && npm run build
+      - name: npm install and build
+        run: |
+          npm install
+          npm run build
+        env:
+          CI: true
+      # 部署到腾讯云服务器
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v2.0.7
+        env:
+            # 本地.ssh文件下的私钥id_rsa，存在secrets的TOKEN中
+            SSH_PRIVATE_KEY: ${{ secrets.TOKEN }} 
+            # 复制操作的参数。"-avzr --delete"意味部署时清空服务器目标目录下的文件
+            ARGS: "-avzr --delete" 
+            # 源目录，相对于$GITHUB_WORKSPACE根目录的路径
+            SOURCE: "dist/" 
+            # 服务器域名
+            REMOTE_HOST: "49.233.195.71" 
+            # 腾讯云默认用户名为root
+            REMOTE_USER: "root" 
+            # 目标目录
+            TARGET: "/usr/share/nginx/html" 
 
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
