@@ -1,0 +1,20 @@
+{
+  "name": "sufu.site",
+  "version": "1.0.0",
+  "description": "book: book.sufu.site",
+  "main": "build.js",
+  "scripts": {
+    "build": "npm run install:all",
+    "install:all": "chmod 777 ./install.sh && ./install.sh dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sufuWang/sufu.site.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sufuWang/sufu.site/issues"
+  },
+  "homepage": "https://github.com/sufuWang/sufu.site#readme"
+}
