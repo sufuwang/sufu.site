@@ -4,8 +4,9 @@
   "description": "book: book.sufu.site",
   "main": "build.js",
   "scripts": {
-    "build": "npm run install:all",
-    "install:all": "chmod 777 ./install.sh && ./install.sh dev"
+    "build:dev": "npm run 777 && ./script/install.sh dev",
+    "build:master": "npm run 777 && ./script/install.sh master",
+    "777": "chmod 777 ./script/*"
   },
   "repository": {
     "type": "git",

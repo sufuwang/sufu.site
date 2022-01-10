@@ -5,6 +5,6 @@ git pull
 git submodule init
 git submodule update
 cd ./$submodule_name 
-git checkout origin $branch
+git checkout origin/$branch
 git pull origin $branch
 cd ..
