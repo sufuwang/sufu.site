@@ -1,0 +1,12 @@
+FROM nginx
+
+WORKDIR /etc/nginx
+COPY ./nginx.conf .
+
+WORKDIR /usr/share/nginx/html/book
+COPY ./dist/book .
+
+
+RUN ls
+
+EXPOSE 80
