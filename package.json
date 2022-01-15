@@ -7,7 +7,7 @@
     "dev": "npm run build:dev",
     "workflow:dev": "npm run 777 && ./script/install.sh dev workflow",
     "workflow:master": "npm run 777 && ./script/install.sh master workflow",
-    "local:dev": "npm run 777 && ./script/install.sh dev",
+    "build:dev": "npm run 777 && ./script/install.sh dev",
     "build:master": "npm run 777 && ./script/install.sh master",
     "777": "chmod 777 ./script/*"
   },

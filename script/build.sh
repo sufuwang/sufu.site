@@ -11,26 +11,14 @@
 # -name: 子库名称
 
 submodule_name=''
-submodule_dist_path=''
 
 if [[ $1 == '-name' ]]
 then
   submodule_name=$2
-elif [[ $3 == '-name' ]]
-then
-  submodule_name=$4
-fi
-
-if [[ "$1" == '-dist' ]]
-then 
-  submodule_dist_path=$2
-elif [[ "$3" == '-dist' ]]
-then 
-  submodule_dist_path=$4
 fi
 
 cd ./$submodule_name
 yarn
 yarn run build
 mkdir ../dist/$submodule_name
-cp -R ./$submodule_dist_path/dist/* ../dist/$submodule_name/
+cp -R ./dist/* ../dist/$submodule_name/

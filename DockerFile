@@ -6,6 +6,8 @@ COPY ./nginx.conf .
 WORKDIR /usr/share/nginx/html/book
 COPY ./dist/book .
 
+WORKDIR /usr/share/nginx/html/life
+COPY ./dist/life .
 
 RUN ls
 

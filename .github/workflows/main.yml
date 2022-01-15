@@ -26,6 +26,13 @@ jobs:
           repository: sufuwang/book.sufu.site
           token: ${{ secrets.SubmoduleToken }}
           path: ./book
+      
+      - name: 获取 life 源码
+        uses: actions/checkout@v2
+        with:
+          repository: sufuwang/life.sufu.site
+          token: ${{ secrets.SubmoduleToken }}
+          path: ./life
 
       - name: 执行脚本
         env:
