@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# cd ./book
-# npm i
-# npm run build
-# mkdir ../dist
-# mkdir ../dist/book
-# cp -R ./docs/.vitepress/dist/* ../dist/book/
-
 # -dist: 子库相对于仓库根目录的 dist 文件夹地址
 # -name: 子库名称
 

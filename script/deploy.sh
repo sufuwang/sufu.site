@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ssh ubuntu@43.134.166.176 "
   sudo chmod 666 /var/run/docker.sock
   docker login
