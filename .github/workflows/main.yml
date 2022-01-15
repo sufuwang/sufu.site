@@ -23,6 +23,7 @@ jobs:
       - name: 获取 book 源码
         uses: actions/checkout@v2
         with:
+          ref: master
           repository: sufuwang/book.sufu.site
           token: ${{ secrets.SubmoduleToken }}
           path: ./book
@@ -30,6 +31,7 @@ jobs:
       - name: 获取 life 源码
         uses: actions/checkout@v2
         with:
+          ref: master
           repository: sufuwang/life.sufu.site
           token: ${{ secrets.SubmoduleToken }}
           path: ./life
