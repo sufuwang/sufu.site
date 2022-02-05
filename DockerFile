@@ -15,7 +15,7 @@ COPY ./dist/system .
 RUN ls
 
 WORKDIR /usr/share/nginx/html/system
-RUN yarn \
-  yarn start
+RUN npm \
+  npm run start
 
 EXPOSE 80
