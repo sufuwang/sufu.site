@@ -9,6 +9,11 @@ COPY ./dist/book .
 WORKDIR /usr/share/nginx/html/life
 COPY ./dist/life .
 
-RUN ls
+WORKDIR /usr/share/nginx/html/system
+COPY ./dist/system .
+
+RUN ls \
+  cd ./dist/system \
+  yarn start
 
 EXPOSE 80

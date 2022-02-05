@@ -24,9 +24,9 @@ echo '----- 打包子库 -----'
 rm -rf dist
 mkdir dist
 pwd
-./script/build.sh book
-./script/build.sh life
-./script/thread.sh system .output
+./script/build.sh book dist
+./script/build.sh life dist
+./script/build.sh system .output
 echo '----- End -----'
 
 echo '----- 删除重名镜像与容器 -----'
