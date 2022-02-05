@@ -11,8 +11,7 @@ chmod 777 ./script/*
 source ./script/env.sh
 
 echo '----- 拉取子库 -----'
-if [[ $work_status == 'workflow' ]]
-then
+if [[ $work_status == 'workflow' ]]; then
   echo 'workflow 模式下, 使用 action/checkoutv2 获取源码'
 else
   echo '----- git pull 获取源码 -----'
@@ -25,8 +24,9 @@ echo '----- 打包子库 -----'
 rm -rf dist
 mkdir dist
 pwd
-./script/build.sh -name book
-./script/build.sh -name life
+./script/build.sh book
+./script/build.sh life
+./script/thread.sh system .output
 echo '----- End -----'
 
 echo '----- 删除重名镜像与容器 -----'
@@ -46,8 +46,7 @@ echo '----- End -----'
 docker login
 docker push $imageName
 
-if [[ $work_status == 'workflow' ]]
-then
+if [[ $work_status == 'workflow' ]]; then
   echo 'workflow 模式下, 使用 appleboy/ssh-action 更新远端镜像'
 else
   echo '----- 本地部署 -----'

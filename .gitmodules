@@ -4,3 +4,6 @@
 [submodule "life"]
 	path = life
 	url = git@github.com:sufuwang/life.sufu.site.git
+[submodule "system"]
+	path = system
+	url = git@github.com:sufuwang/system.sufu.site.git

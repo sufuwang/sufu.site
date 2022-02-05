@@ -35,6 +35,14 @@ jobs:
           repository: sufuwang/life.sufu.site
           token: ${{ secrets.SubmoduleToken }}
           path: ./life
+      
+      - name: 获取 system 源码
+        uses: actions/checkout@v2
+        with:
+          ref: master
+          repository: sufuwang/system.sufu.site
+          token: ${{ secrets.SubmoduleToken }}
+          path: ./system
 
       - name: 执行脚本
         env:
