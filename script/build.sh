@@ -4,7 +4,7 @@
 # -name: 子库名称
 
 submodule_name=$1
-build_path=$1
+build_path=$2
 
 cd ./$submodule_name
 yarn
