@@ -12,8 +12,10 @@ COPY ./dist/life .
 WORKDIR /usr/share/nginx/html/system
 COPY ./dist/system .
 
-RUN ls \
-  cd ./dist/system \
+RUN ls
+
+WORKDIR /usr/share/nginx/html/system
+RUN yarn \
   yarn start
 
 EXPOSE 80
