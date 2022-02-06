@@ -50,5 +50,12 @@ if [[ $work_status == 'workflow' ]]; then
   echo 'workflow 模式下, 使用 appleboy/ssh-action 更新远端镜像'
 else
   echo '----- 本地部署 -----'
-  ./script/deploy.sh
+  ssh ubuntu@43.134.166.176 "
+    sudo chmod 666 /var/run/docker.sock
+    docker login
+    docker rm sufu.site.nginx -f
+    docker rmi sufuwang/sufu.site
+    docker pull sufuwang/sufu.site
+    docker run -d -p 80:80 --name sufu.site.nginx sufuwang/sufu.site
+  "
 fi
