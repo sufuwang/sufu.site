@@ -14,8 +14,6 @@ COPY ./dist/system .
 
 RUN ls
 
-WORKDIR /usr/share/nginx/html/system
-RUN npm \
-  npm run start
+CMD ["cd /usr/share/nginx/html/system", "npm install", "npm run start"]
 
 EXPOSE 80
