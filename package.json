@@ -4,12 +4,12 @@
   "description": "book: book.sufu.site",
   "main": "build.js",
   "scripts": {
-    "dev": "npm run build:dev",
-    "workflow:dev": "npm run 777 && ./script/install.sh dev workflow",
-    "workflow:master": "npm run 777 && ./script/install.sh master workflow",
-    "build:dev": "npm run 777 && ./script/install.sh dev",
-    "build:master": "npm run 777 && ./script/install.sh master",
-    "777": "chmod 777 ./script/*"
+    "dev": "npm run local:master",
+    "workflow:dev": "npm run 777 && ./install.sh dev workflow",
+    "workflow:master": "npm run 777 && ./install.sh master workflow",
+    "local:dev": "npm run 777 && ./install.sh dev local",
+    "local:master": "npm run 777 && ./install.sh master local",
+    "777": "chmod 777 ./install.sh"
   },
   "repository": {
     "type": "git",

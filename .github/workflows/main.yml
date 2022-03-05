@@ -45,9 +45,6 @@ jobs:
           path: ./system
 
       - name: 执行脚本
-        env:
-          imageName: sufuwang/sufu.site
-          containerName: sufu.site.nginx
         run: yarn run workflow:dev
 
       - name: 更新远端镜像
@@ -60,7 +57,12 @@ jobs:
           script: |
             # sudo chmod 666 /var/run/docker.sock
             docker login -u sufuwang --password-stdin ${{ secrets.DockerPassWord }}
+            docker login
             docker rm sufu.site.nginx -f
-            docker rmi sufuwang/sufu.site
-            docker pull sufuwang/sufu.site
-            docker run -d -p 80:80 --name sufu.site.nginx sufuwang/sufu.site
+            docker rm sufu.site.nodejs -f
+            docker rmi sufuwang/sufu_site_nginx
+            docker rmi sufuwang/sufu_site_nodejs
+            docker pull sufuwang/sufu_site_nginx
+            docker pull sufuwang/sufu_site_nodejs
+            docker run -d -p 80:80 --name sufu.site.nginx sufuwang/sufu_site_nginx
+            docker run -d -h 0.0.0.0 -p 4002:4002 --name sufu.site.nodejs sufuwang/sufu_site_nodejs

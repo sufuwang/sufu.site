@@ -1,0 +1,35 @@
+version: '3'
+
+networks:
+  app-web:
+    driver: bridge
+
+services:
+  # life.sufu.site 3001
+  # book.sufu.site 3002
+  nginx:
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: dockerfile/nginx.dockerfile
+    ports:
+      - '80:80'
+    platform: linux/amd64
+    networks:
+     - app-web
+    logging:
+      driver: json-file
+
+  # metaverse.sufu.site 4001
+  # system.sufu.site 4002
+  nodejs:
+    container_name: nodejs
+    build:
+      context: .
+      dockerfile: dockerfile/nodejs.dockerfile
+    ports:
+      - 4002:3000
+    platform: linux/amd64
+    command: pm2 start ./server/index.mjs --attach
+    depends_on:
+     - container-nginx
