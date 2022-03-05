@@ -13,7 +13,7 @@ services:
       context: .
       dockerfile: dockerfile/nginx.dockerfile
     ports:
-      - '80:80'
+      - 80:80
     platform: linux/amd64
     networks:
      - app-web

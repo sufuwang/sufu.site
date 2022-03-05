@@ -82,7 +82,7 @@ elif [[ $work_status == 'local' ]]; then
     docker rmi sufuwang/sufu_site_nodejs
     docker pull sufuwang/sufu_site_nginx
     docker pull sufuwang/sufu_site_nodejs
-    docker run -d -p 80:80 -p 4002:4002 --name sufu.site.nginx sufuwang/sufu_site_nginx
+    docker run -d -h 0.0.0.0 -p 80:80 --name sufu.site.nginx sufuwang/sufu_site_nginx
     docker run -d -h 0.0.0.0 -p 4002:4002 --name sufu.site.nodejs sufuwang/sufu_site_nodejs
   "
 fi
