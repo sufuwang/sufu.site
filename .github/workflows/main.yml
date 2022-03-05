@@ -53,7 +53,7 @@ jobs:
           host: ${{ secrets.SSHHost }}
           port: 22
           username: ubuntu
-          password: ${{ secrets.SSHPassWord }}
+          key: ${{ secrets.SSHPrivateKey }}
           script: |
             # sudo chmod 666 /var/run/docker.sock
             docker login -u sufuwang --password-stdin ${{ secrets.DockerPassWord }}
