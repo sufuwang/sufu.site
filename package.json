@@ -4,7 +4,8 @@
   "description": "book: book.sufu.site",
   "main": "build.js",
   "scripts": {
-    "dev": "npm run local:master",
+    "dev": "./configuration/dev/install.sh",
+    "dev:dc": "cd ./configuration/dev && docker-compose up",
     "workflow:dev": "npm run 777 && ./install.sh dev workflow",
     "workflow:master": "npm run 777 && ./install.sh master workflow",
     "local:dev": "npm run 777 && ./install.sh dev local",

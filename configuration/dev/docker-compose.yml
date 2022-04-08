@@ -1,0 +1,29 @@
+
+version: '3.8'
+
+networks:
+  app-web:
+    driver: bridge
+
+services:
+  # life.sufu.site 3001
+  # book.sufu.site 3002
+  nginx_demo:
+    build:
+      context: .
+      dockerfile: nginx.dockerfile
+    volumes:
+      - ../dist/book:/usr/share/nginx/html/book:rw
+    ports:
+      - 9999:80
+    networks:
+      - app-web
+
+  # metaverse.sufu.site 4001
+  # system.sufu.site 4002
+  nodejs_demo:
+    build:
+      context: .
+      dockerfile: node.dockerfile
+    ports:
+      - 4002:3001
