@@ -1,16 +1,12 @@
 {
   "name": "sufu.site",
   "version": "1.0.0",
-  "description": "book: book.sufu.site",
-  "main": "build.js",
+  "description": "sufu.site",
   "scripts": {
-    "dev": "./configuration/dev/install.sh",
-    "dev:dc": "cd ./configuration/dev && docker-compose up",
-    "workflow:dev": "npm run 777 && ./install.sh dev workflow",
-    "workflow:master": "npm run 777 && ./install.sh master workflow",
-    "local:dev": "npm run 777 && ./install.sh dev local",
-    "local:master": "npm run 777 && ./install.sh master local",
-    "777": "chmod 777 ./install.sh"
+    "dev": "./dev/install.sh",
+    "build": "./prod/install.sh",
+    "dev:7": "chmod 777 ./dev/install.sh",
+    "build:7": "chmod 777 ./prod/install.sh"
   },
   "repository": {
     "type": "git",

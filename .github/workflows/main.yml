@@ -2,7 +2,7 @@ name: Build a sufu.site Image AND Push Docker Hub
 
 on:
   push:
-    branches: [ master ]
+    branches: [ feature/dist ]
 
 jobs:
   Main:
@@ -20,32 +20,16 @@ jobs:
           username: sufuwang
           password: ${{ secrets.DockerPassWord }}
 
-      - name: 获取 book 源码
+      - name: 获取 dist 仓库
         uses: actions/checkout@v2
         with:
           ref: master
-          repository: sufuwang/book.sufu.site
+          repository: sufuwang/dist.sufu.site
           token: ${{ secrets.SubmoduleToken }}
-          path: ./book
-      
-      - name: 获取 life 源码
-        uses: actions/checkout@v2
-        with:
-          ref: master
-          repository: sufuwang/life.sufu.site
-          token: ${{ secrets.SubmoduleToken }}
-          path: ./life
-      
-      - name: 获取 system 源码
-        uses: actions/checkout@v2
-        with:
-          ref: master
-          repository: sufuwang/system.sufu.site
-          token: ${{ secrets.SubmoduleToken }}
-          path: ./system
+          path: ./dist
 
       - name: 执行脚本
-        run: yarn run workflow:dev
+        run: yarn build
 
       - name: 更新远端镜像
         uses: appleboy/ssh-action@master
@@ -55,9 +39,8 @@ jobs:
           username: ubuntu
           key: ${{ secrets.SSHPrivateKey }}
           script: |
-            # sudo chmod 666 /var/run/docker.sock
+            sudo chmod 666 /var/run/docker.sock
             docker login -u sufuwang --password-stdin ${{ secrets.DockerPassWord }}
-            docker login
             docker rm sufu.site.nginx -f
             docker rm sufu.site.nodejs -f
             docker rmi sufuwang/sufu_site_nginx
