@@ -31,9 +31,6 @@ jobs:
       - name: 执行脚本
         run: yarn build
 
-      - name: 推送镜像至远端
-        run: yarn push
-
       - name: 更新远端镜像
         uses: appleboy/ssh-action@master
         with:
