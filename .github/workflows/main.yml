@@ -41,7 +41,6 @@ jobs:
           script: |
             # sudo chmod 666 /var/run/docker.sock
             docker login -u sufuwang --password-stdin ${{ secrets.DockerPassWord }}
-            docker login
             docker rm sufu.site.nginx -f
             docker rm sufu.site.nodejs -f
             docker rmi sufuwang/sufu_site_nginx
