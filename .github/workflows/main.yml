@@ -39,7 +39,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.SSHPrivateKey }}
           script: |
-            # sudo chmod 666 /var/run/docker.sock
+            sudo chmod 666 /var/run/docker.sock
             docker login -u sufuwang --password-stdin ${{ secrets.DockerPassWord }}
             docker rm sufu.site.nginx -f
             docker rm sufu.site.nodejs -f
