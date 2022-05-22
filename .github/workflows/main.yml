@@ -2,7 +2,7 @@ name: Build a sufu.site Image AND Push Docker Hub
 
 on:
   push:
-    branches: [ feature/dist ]
+    branches: [ master ]
 
 jobs:
   Main:
